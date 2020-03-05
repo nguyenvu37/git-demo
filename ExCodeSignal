@@ -1,0 +1,40 @@
+function mergeStrings(s1, s2) {
+  let arrS1 = s1.split('');
+  let arrS2 = s2.split('');
+  let letterS1 = 0, letterS2 = 0;
+
+  let arr = [], newArr = [];
+
+  let numberArrS1 = arrS1.map( item => item.charCodeAt(0) - 96);
+  let numberArrS2 = arrS2.map( item => item.charCodeAt(0) - 96);
+  if (numberArrS1.length > numberArrS2.length) {
+    for (let i = 0; i < numberArrS1.length; i++) {
+      if (numberArrS1[i] > numberArrS2[i]) {
+        arr.push(arrS2[i]);
+        arr.push(arrS1[i]);
+      } else {
+        arr.push(arrS1[i]);
+        arr.push(arrS2[i]);
+      }
+    }
+    newArr = arr.filter( item => item !== undefined);
+  }
+
+  if (numberArrS1.length <= numberArrS2.length) {
+    for (let i = 0; i < numberArrS2.length; i++) {
+      if (numberArrS1[i] > numberArrS2[i]) {
+        arr.push(arrS2[i]);
+        arr.push(arrS1[i]);
+      } else {
+        arr.push(arrS1[i]);
+        arr.push(arrS2[i]);
+      }
+    }
+    newArr = arr.filter( item => item !== undefined);
+  }
+
+return newArr.join('')
+ 
+}
+
+mergeStrings("dce", "cccbd")
